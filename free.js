@@ -1,3 +1,4 @@
+//freelancers to be added
 const newFreelancers = [
     { name: "Dr. Slice", price: 25, occupation: "gardener" },
     { name: "Dr. Pressure", price: 51, occupation: "programmer" },
@@ -9,8 +10,8 @@ const newFreelancers = [
     { name: "Prof. Goose", price: 72, occupation: "driver" },
   ];
 
-const initial = {
-    freelancers: [
+  //freelancers to be shown on page load
+const initial = [
 {    
     name: `Alice`, price: 30, occupation: `Writer`,
 },
@@ -20,21 +21,24 @@ const initial = {
 {
     name: `Carol`, price : 70, occupation: `Programmer`,
 },
-  ]}
+  ];
 
+  //calculate average
 function averageRate(){
     let avg = 0;
-    for (let i = 0; i < initial.freelancers.length; i++){
-        const newFreelancer = initial.freelancers[i];
+    for (let i = 0; i < initial.length; i++){
+        const newFreelancer = initial.i;
         avg += newFreelancer.price;
     }
-    initial.averageRate = Math.round(avg/initial.freelancers.length);
+    initial.averageRate = Math.round(avg/initial.length);
 }
 
+//push new listing to array
 function newPost(freelancer){
-    initial.freelancers.push(freelancer);
+    initial.push(freelancer);
 }
 
+//create single freelancer listing in HTML
 function createNewPost(freelancer){
     const postRow = document.createElement("tr");
     const newName = document.createElement("td");
@@ -48,6 +52,7 @@ function createNewPost(freelancer){
     return postRow.append(newName, newOcc, newPrice);
 }
 
+//clear table function
 function emptyListings(){
     const listings = document.getElementById("listings");
 
@@ -56,37 +61,45 @@ function emptyListings(){
     };
 }
 
+
+//render
 function render(){
     emptyListings();   //start with empty listing table
 
+    //table to add postings 
     const listings = document.getElementById("listings");
 
-    for(let i = 0; i < initial.freelancers.length; i++){
-        const nextFreelancer = initial.freelancers[i];
+    //add new freelancers to table
+    for(let i = 0; i < initial.length; i++){
+        const nextFreelancer = initial[i];
         const nextListing = createNewPost(nextFreelancer);
         listings.appendChild(nextListing);
     }
 
+    //calculate and display average
     averageRate();
     const avgDisplay = document.getElementById("avgRate");
     avgDisplay.textContent = "The average price is $${initial.averageRate}";
 }
 
+//call render function
 render();
 
+
+//function to create single freelancer objects
 function addFreelancer(){
     for(let i=0; i< newFreelancers.length; i++){
         const freelancer = {
-            name: newFreelancers.name[i],
-            occupation:  newFreelancers.occupation[i],
-            price: newFreelancers.price[i]
-
+            name : newFreelancers.name[i], 
+            occupation : newFreelancers.occupation[i], 
+            price : newFreelancers.price[i]
         };
     
     return freelancer;
     }
 }
 
+//interval function
 setInterval(function(){
 const newFreelancer = addFreelancer();
 newPost(newFreelancer);
