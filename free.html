@@ -4,22 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Freelancer Forum</title>
-    <script defer scr="free.js"></script>
+    <script defer src="free.js"></script>
   </head>
   <body>
     <h1>Freelancer Forum</h1>
-    <h3>The average starting price is: $</h3>
+    <h3 id="avgRate">The average starting price is: $</h3>
     <h2>Available Freelancers</h2>
-    <div class="listings">
-      <ul class="name">
-        Name
-      </ul>
-      <ul class="occ">
-        Occupation
-      </ul>
-      <ul class="rate">
-        Starting Price
-      </ul>
-    </div>
+    <table class="postInfo">
+      <th>Name</th>
+      <th>Occupation</th>
+      <th>Starting Rate</th>
+    </table>
+    <table id="listings"></table>
   </body>
 </html>
